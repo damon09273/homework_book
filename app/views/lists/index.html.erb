@@ -1,0 +1,27 @@
+<ul>
+<% @lists.each do |list| %>
+
+<li>
+<%= list.id %>	
+</li>
+
+
+<li>
+<%= list.name %>
+  <%= link_to 'Edit', :controller => 'lists', :action => 'edit', :id => list %>
+  <%= link_to 'Delete', :controller => 'lists', :action => 'destroy', :id => list %>
+</li>	
+
+<li>
+<%= list.description %>	
+</li>
+
+<li>
+<%= list.isbn %>	
+</li>
+
+
+<% end %>
+
+</ul>
+<%= link_to 'New Event', new_list_path %>

@@ -1,0 +1,12 @@
+<%= form_for @list, :url => lists_path do |f| %>
+    <%= f.label :name, "Book Name" %>
+    <%= f.text_field :name %>
+
+    <%= f.label :description, "Description" %>
+    <%= f.text_area :description %>
+
+    <%= f.label :isbn, "ISBN" %>
+    <%= f.text_area :isbn %>
+
+    <%= f.submit "Create" %>
+<% end %>
