@@ -1,12 +1,25 @@
 class ListsController < ApplicationController
-before_action :set_event, :only => [ :show, :edit, :update, :destroy]
+before_action :set_list, :only => [ :show, :edit, :update, :destroy]
 
 def index
 	@lists = List.all
 end
 
+def edit	
+end 
+
+
 def new
 	@list = List.new
+end
+
+def update
+	if 	@list.update(list_params)
+			flash[:notice] = "更新成功"
+	  	redirect_to list_path(@list)
+	else
+			render :action => :edit
+	end	
 end
 
 def create
@@ -19,13 +32,21 @@ def create
 	end
 end
 
+def destroy
+	@list.destroy
+	flash[:alert] = "刪除成功"
+  redirect_to lists_path # lists#index
+end
+
 
 private
 def list_params
 	params.require(:list).permit(:name, :description, :isbn)
 end
 
-
+def set_list
+  @list = List.find(params[:id])
+end
 
 
 end
