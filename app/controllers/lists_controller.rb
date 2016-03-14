@@ -2,7 +2,7 @@ class ListsController < ApplicationController
 before_action :set_list, :only => [ :show, :edit, :update, :destroy]
 
 def index
-	@lists = List.page(params[:page]).per(5)
+	@lists = List.page(params[:page]).per(10)
 end
 
 def edit	
@@ -12,7 +12,7 @@ end
 def new
 	@list = List.new
 end
-
+# instance variable
 def update
 	if 	@list.update(list_params)
 			flash[:notice] = "更新成功"
